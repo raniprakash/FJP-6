@@ -50,3 +50,14 @@ console.log(capAmerica.Address.City);
 //sayHi
 console.log(capAmerica.saysHi());
 capAmerica.saysHi();
+
+
+//adding keys to objects
+
+console.log("object before adding new key: ",capAmerica);
+capAmerica.Movies =['Captain America:The First Avenger','Avengers','Civil-War','Endgame'];
+console.log("object after adding new key: ",capAmerica);
+
+//deleting key
+delete capAmerica.Movies;
+console.log(capAmerica);
