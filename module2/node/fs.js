@@ -38,3 +38,20 @@ let folderpath="D:\\FJP-6\\module1";
 let contentOfPath=fs.readdirSync(folderpath);
 console.log(contentOfPath);
  
+
+//Delete a Directory
+
+// fs.rmdirSync("NewDirectory");
+
+
+//Copy a file
+
+let sourcePath=path.join(__dirname,"file.txt");
+let destinationPath=path.join(__dirname,"module","file.txt");
+
+// console.log(sourcePath);
+// console.log(destinationPath);
+
+fs.copyFileSync(sourcePath,destinationPath);
+
+
