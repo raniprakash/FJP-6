@@ -37,7 +37,17 @@ if(folderExists){
     {
         let ext=path.extname(files[i]);
         let nameOfFolder=giveNameOfFolder(ext);
-        console.log("Ext-->",ext,"FolderName-->",nameOfFolder);
+        // console.log("Ext-->",ext,"FolderName-->",nameOfFolder);
+        //Task 4: Check if the folder exists, if it is not then create the folder
+        let pathOfFolder=path.join(folderpath,nameOfFolder);
+        let exist=fs.existsSync(pathOfFolder);
+        if(exist){
+            moveFile(folderpath,pathOfFolder,files[i]);
+        }else{
+            fs.mkdirSync(pathOfFolder);//doesn't exist create folder
+            moveFile(folderpath,pathOfFolder,files[i]);
+
+        }
     }
 }
 else{
@@ -58,3 +68,10 @@ function giveNameOfFolder(ext)
     return 'Others';
 }
    
+function moveFile(folderpath,pathOfFolder,fileName){
+    let srcpath=path.join(folderpath,fileName);
+    let destpath=path.join(pathOfFolder,fileName);
+
+    fs.copyFileSync(srcpath,destpath);
+    fs.unlinkSync(srcpath);
+}
